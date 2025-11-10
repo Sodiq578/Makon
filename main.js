@@ -1,5 +1,5 @@
 // ================= TIMER =================
-let minutes = 3;
+let minutes = 1;
 let seconds = 5;
 const timeDisplay = document.getElementById('time');
 
@@ -49,7 +49,7 @@ window.addEventListener('click', e => {
 // ================= TELEGRAM SOZLAMALARI =================
 const BOT_TOKEN = '8328125073:AAEWoSW-yjqgPLq4uLPEKGyemwa2lr47x6I';
 const CHAT_ID   = '-4935605017';
-const TG_LINK   = 'https://t.me/+3URgcHWZZzE4Njcy';
+const TG_LINK   = 'https://t.me/megaaksiya2026';
 
 // LocalStorage orqali kunlik yuborishni nazorat qilamiz
 let message_id = localStorage.getItem('tg_message_id');
