@@ -103,30 +103,31 @@
                     <img src="./images/barmoqizi.png" alt="Barmoq izi">
                 </button>
 
-                <!-- 2. Forma modal -->
-                <div class="modal" id="formModal">
-                    <div class="modal-content">
-                        <span class="close" id="closeModal">×</span>
-                        <h3>Davom etish uchun ma'lumotlaringizni kiriting</h3>
+                <section class="taqdimot">
+    <button class="btn btn2" id="openModalTaqdimot">Bepul qatnashish</button>
 
-                        <form id="userForm">
-                            <input type="text" placeholder="Ismingiz" id="name" required>
-                            <div class="phone-input">
-                                <input type="tel" placeholder="Telefon raqamingiz" id="phone">
-                            </div>
-                            <button type="submit" class="submit-btn">DAVOM ETISH</button>
-                        </form>
-                    </div>
-                </div>
+    <!-- Forma modal -->
+    <div class="modal" id="formModal">
+      <div class="modal-content">
+        <span class="close" id="closeModal">&times;</span>
+        <h3>Davom etish uchun ma'lumotlaringizni kiriting</h3>
+        <form id="userForm">
+          <input type="text" placeholder="Ismingiz" id="name" required>
+          <input type="tel" placeholder="Telefon raqamingiz" id="phone" required>
+          <button type="submit" class="submit-btn">DAVOM ETISH</button>
+        </form>
+      </div>
+    </div>
 
-                <!-- 3. Muvaffaqiyat modal -->
-                <div class="modal" id="successModal">
-                    <div class="modal-content success-modal">
-                        <h2>Yana bir qadam qoldi!</h2>
-                        <p>Jonli efirda qatnashish uchun quyidagi tugmani bosib yopiq telegram kanalga obuna bo'ling!</p>
-                        <button class="subscribe-btn" id="subscribeLink">OBUNA BO‘LISH →</button>
-                    </div>
-                </div>
+    <!-- Success modal -->
+    <div class="modal" id="successModal">
+      <div class="modal-content success-modal">
+        <h2>Yana bir qadam qoldi!</h2>
+        <p>Jonli efirda qatnashish uchun quyidagi tugmani bosib yopiq telegram kanalga obuna bo'ling!</p>
+        <button class="subscribe-btn" id="subscribeLink">OBUNA BO‘LISH →</button>
+      </div>
+    </div>
+  </section>
             </div>
         </section>
     </main>
