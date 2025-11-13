@@ -2,151 +2,202 @@
 <html lang="uz">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Qanday qilib oyiga 4 mln so'mdan to‘lab uy olish mumkin?</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Qanday qilib oyiga 4 mln so'mdan to‘lab uy olish mumkin?</title>
 
-    <meta name="description"
-        content="Bepul taqdimotda siz oyiga 4 mln so'mdan to‘lab, uy olish imkoniyatini bilib olishingiz mumkin. Foizlarsiz uy olish yo‘llari va sovg‘alar.">
-    <meta name="keywords" content="uy olish, kreditsiz uy, taqdimot, sovg‘a, oyiga to‘lov, Cobalt avtomashina">
-    <meta name="author" content="Sodiqjon Sodiqov">
-    
-<!-- Meta Pixel Code -->
-<script>
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '500469142560454');
-fbq('track', 'PageView');
-</script>
-<noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=500469142560454&ev=PageView&noscript=1"
-/></noscript>
-<!-- End Meta Pixel Code -->
+  <meta name="description"
+    content="Bepul taqdimotda siz oyiga 4 mln so'mdan to‘lab, uy olish imkoniyatini bilib olishingiz mumkin. Foizlarsiz uy olish yo‘llari va sovg‘alar.">
+  <meta name="keywords" content="uy olish, kreditsiz uy, taqdimot, sovg‘a, oyiga to‘lov, Cobalt avtomashina">
+  <meta name="author" content="Sodiqjon Sodiqov">
 
-    <link href="https://cdn.jsdelivr.net/gh/repalash/gilroy-free-webfont@fonts/Gilroy-Regular.css" rel="stylesheet">
-    <link rel="stylesheet" href="./main.css">
+  <!-- Meta Pixel -->
+  <script>
+    !function (f, b, e, v, n, t, s) {
+      if (f.fbq) return; n = f.fbq = function () {
+        n.callMethod ?
+          n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+      };
+      if (!f._fbq) f._fbq = n;
+      n.push = n; n.loaded = !0; n.version = '2.0';
+      n.queue = []; t = b.createElement(e); t.async = !0;
+      t.src = v; s = b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t, s)
+    }(window, document, 'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '500469142560454');
+    fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+      src="https://www.facebook.com/tr?id=500469142560454&ev=PageView&noscript=1" /></noscript>
 
+  <link href="https://cdn.jsdelivr.net/gh/repalash/gilroy-free-webfont@fonts/Gilroy-Regular.css" rel="stylesheet">
+  <link rel="stylesheet" href="./main.css">
 </head>
 
 <body>
-    <header>
-        <div class="container">
-            <div class="header-box">
-                <p class="header-date">21-Noyabr</p>
-                <img class="header-logo" src="./images/logo.png" alt="Firma logotipi">
-                <p class="header-time">20:30</p>
-            </div>
+  <header>
+    <div class="container">
+      <div class="header-box">
+        <p class="header-date">21-Noyabr</p>
+        <img class="header-logo" src="./images/logo.png" alt="Firma logotipi">
+        <p class="header-time">20:30</p>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <section class="hero-section">
+      <h1 class="hero-text">
+        QANDAY QILIB <span class="highlight"><br>BITTA UYGA TO'LAB</span><br>
+        <span class="highlight">2-UYNI SOVG'AGA OLISH</span><br>
+        MUMKIN?
+      </h1>
+    </section>
+
+    <section class="btn-section">
+      <button class="btn" id="openModalHero" aria-label="Bepul qatnashish">
+        Bepul qatnashish
+        <img src="./images/barmoqizi.png" alt="Barmoq izi">
+      </button>
+
+      <div class="timer">
+        <div class="time-display" id="time">1:00</div>
+        <div class="labels">
+          <div class="label-group"><p>Daqiqa</p></div>
+          <div class="label-group"><p>Soniya</p></div>
         </div>
-    </header>
-
-    <main>
-      
-        <section class="hero-section">
-           <h1 class="hero-text">
-    QANDAY QILIB <span class="highlight"><br>BITTA UYGA TO'LAB</span><br>
-    <span class="highlight">2-UYNI SOVG'AGA OLISH</span><br>
-    MUMKIN?
-</h1>
-
-        </section>
-
-       
-        <section class="btn-section">
-            <button class="btn" id="openModalHero" aria-label="Bepul qatnashish">
-                Bepul qatnashish
-                <img src="./images/barmoqizi.png" alt="Barmoq izi">
-            </button>
-
-            <div class="timer">
-                <div class="time-display" id="time">1:00</div>
-                <div class="labels">
-                    <div class="label-group"><p>Daqiqa</p></div>
-                    <div class="label-group"><p>Soniya</p></div>
-                </div>
-            </div>
-        </section>
-
-        <!-- PRESENT SECTION -->
-        <section class="present">
-            <div class="container present-container">
-                <article class="present-box">
-                    <h2 class="present-title">MAXSUS SOVG'A</h2>
-                    <p class="present-text"><b>4 TA COBALT</b> avtomashinasidan birini yutib olish imkoniyati!</p>
-                    <img src="./images/moshin1.png" alt="Cobalt avtomashina sovg‘asi" class="present-img">
-                </article>
-            </div>
-        </section>
-
-        <!-- TAQDIMOT SECTION -->
-        <section class="taqdimot">
-            <div class="container taqdimot-big-box">
-                <h2 class="taqdimot-text">BEPUL <span class="taqdirmot-text-orench">TAQDIMOTDA: </span></h2>
-
-                <article class="taqdimot-box">
-                    <div class="taqdimot-text-box">
-                        <div class="taq-min-box"><img src="./images/taqic3.svg" alt="Taqdimot ikonasi 3"></div>
-                        <p class="taqdrimot-title">
-                           Qanday qilib 1 ta uyga to’lov qilib 2-sini sovg’aga olishiz mumkinligini 
-                        </p>
-                    </div>
-                </article>
-
-                <article class="taqdimot-box">
-                    <div class="taqdimot-text-box">
-                        <div class="taq-min-box"><img src="./images/taqic2.svg" alt="Taqdimot ikonasi 2"></div>
-                        <p class="taqdrimot-title">
-                         Qanday qilib Uyga to’lov qilib Cobalt yutib olishiz mumkinligini 
-                        </p>
-                    </div>
-                </article>
-
-                <article class="taqdimot-box">
-                    <div class="taqdimot-text-box">
-                        <div class="taq-min-box"><img src="./images/taqic1.svg" alt="Taqdimot ikonasi 1"></div>
-                        <p class="taqdrimot-title">
-                           Va qanday qilib Karobka holatdagi uyga to’lov qilib, Podklyuch uy olishiz mumkinligini bilib olishingiz mumkin.
-                    </div>
-                </article>
-
-                <button class="btn btn2" id="openModalTaqdimot" aria-label="Bepul qatnashish">
-                    Bepul qatnashish
-                    <img src="./images/barmoqizi.png" alt="Barmoq izi">
-                </button>
-
-                <section class="taqdimot">
-
-    <!-- Forma modal -->
-    <div class="modal" id="formModal">
-      <div class="modal-content">
-        <span class="close" id="closeModal">&times;</span>
-        <h3>Davom etish uchun ma'lumotlaringizni kiriting</h3>
-        <form id="userForm">
-          <input type="text" placeholder="Ismingiz" id="name" required>
-          <input type="tel" placeholder="Telefon raqamingiz" id="phone" required>
-          <button type="submit" class="submit-btn">DAVOM ETISH</button>
-        </form>
       </div>
-    </div>
+    </section>
 
-    <!-- Success modal -->
-    <div class="modal" id="successModal">
-      <div class="modal-content success-modal">
-        <h2>Yana bir qadam qoldi!</h2>
-        <p>Jonli efirda qatnashish uchun quyidagi tugmani bosib yopiq telegram kanalga obuna bo'ling!</p>
-        <button class="subscribe-btn" id="subscribeLink">OBUNA BO‘LISH →</button>
+    <section class="present">
+      <div class="container present-container">
+        <article class="present-box">
+          <h2 class="present-title">MAXSUS SOVG'A</h2>
+          <p class="present-text"><b>4 TA COBALT</b> avtomashinasidan birini yutib olish imkoniyati!</p>
+          <img src="./images/moshin1.png" alt="Cobalt avtomashina sovg‘asi" class="present-img">
+        </article>
       </div>
-    </div>
-  </section>
-            </div>
-        </section>
-    </main>
+    </section>
 
-    <script src="./main.js"></script>
+    <section class="taqdimot">
+      <div class="container taqdimot-big-box">
+        <h2 class="taqdimot-text">BEPUL <span class="taqdirmot-text-orench">TAQDIMOTDA:</span></h2>
+
+        <article class="taqdimot-box">
+          <div class="taqdimot-text-box">
+            <div class="taq-min-box"><img src="./images/taqic3.svg" alt=""></div>
+            <p class="taqdrimot-title">Qanday qilib 1 ta uyga to’lov qilib 2-sini sovg’aga olishiz mumkinligini</p>
+          </div>
+        </article>
+
+        <article class="taqdimot-box">
+          <div class="taqdimot-text-box">
+            <div class="taq-min-box"><img src="./images/taqic2.svg" alt=""></div>
+            <p class="taqdrimot-title">Qanday qilib uyga to’lov qilib Cobalt yutib olishiz mumkinligini</p>
+          </div>
+        </article>
+
+        <article class="taqdimot-box">
+          <div class="taqdimot-text-box">
+            <div class="taq-min-box"><img src="./images/taqic1.svg" alt=""></div>
+            <p class="taqdrimot-title">Va qanday qilib karobka holatdagi uyga to’lov qilib, podklyuch uy olishni bilib olasiz.</p>
+          </div>
+        </article>
+
+        <button class="btn btn2" id="openModalTaqdimot" aria-label="Bepul qatnashish">
+          Bepul qatnashish
+          <img src="./images/barmoqizi.png" alt="Barmoq izi">
+        </button>
+
+        <!-- Modal -->
+        <div class="modal" id="formModal">
+          <div class="modal-content">
+            <span class="close" id="closeModal">&times;</span>
+            <h3>Davom etish uchun telefon raqamingizni kiriting</h3>
+            <form id="userForm">
+              <input type="tel" placeholder="+998 XX XXX XX XX" id="phone" required>
+              <button type="submit" class="submit-btn">DAVOM ETISH</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    // ================= TIMER =================
+    let minutes = 1;
+    let seconds = 0;
+    const timeDisplay = document.getElementById('time');
+
+    function updateTimer() {
+      let m = minutes < 10 ? '0' + minutes : minutes;
+      let s = seconds < 10 ? '0' + seconds : seconds;
+      timeDisplay.textContent = `${m}:${s}`;
+
+      if (seconds > 0) {
+        seconds--;
+      } else {
+        if (minutes > 0) {
+          minutes--;
+          seconds = 59;
+        } else {
+          clearInterval(timerInterval);
+          alert("Vaqt tugadi!");
+        }
+      }
+    }
+
+    updateTimer();
+    const timerInterval = setInterval(updateTimer, 1000);
+
+    // ================= MODAL =================
+    const openBtnHero = document.getElementById('openModalHero');
+    const openBtnTaqdimot = document.getElementById('openModalTaqdimot');
+    const formModal = document.getElementById('formModal');
+    const closeModal = document.getElementById('closeModal');
+    const form = document.getElementById('userForm');
+
+    openBtnHero.addEventListener('click', () => formModal.style.display = 'flex');
+    openBtnTaqdimot.addEventListener('click', () => formModal.style.display = 'flex');
+    closeModal.addEventListener('click', () => formModal.style.display = 'none');
+
+    // ================= TELEGRAM SOZLAMALARI =================
+    const BOT_TOKEN = '8328125073:AAEWoSW-yjqgPLq4uLPEKGyemwa2lr47x6I';
+    const CHAT_ID = '-4935605017';
+    const TG_LINK = 'https://t.me/+PIWZ83zlMeo4NTQy';
+
+    // ================= FORM YUBORISH =================
+    form.addEventListener('submit', async e => {
+      e.preventDefault();
+
+      const phone = document.getElementById('phone').value.trim();
+      if (!phone) {
+        alert("Iltimos, telefon raqamingizni kiriting!");
+        return;
+      }
+
+      const text = `📲 Yangi ishtirokchi!\n📞 Telefon: ${phone}`;
+
+      try {
+        const res = await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ chat_id: CHAT_ID, text })
+        });
+
+        if (res.ok) {
+          formModal.style.display = 'none';
+          window.open(TG_LINK, '_blank'); // Telegram kanalga yo‘naltirish
+        } else {
+          alert("Xatolik yuz berdi. Qayta urinib ko‘ring.");
+        }
+      } catch (err) {
+        alert("Internet aloqasi yo‘q yoki server bilan bog‘lanib bo‘lmadi.");
+      }
+    });
+  </script>
 </body>
 </html>
