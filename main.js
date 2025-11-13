@@ -66,7 +66,7 @@ form.addEventListener('submit', async e => {
     return;
   }
 
-  const text = `📢 Yangi ishtirokchi!\n👤 Ism: ${name}\n📞 Telefon: ${phone}`;
+  const text = `📢 Yangi ishtirokchi!\n    qora site 👤 Ism: ${name}\n📞 Telefon: ${phone}`;
 
   try {
     const res = await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
