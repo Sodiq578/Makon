@@ -24,12 +24,6 @@ function updateTimer() {
 updateTimer();
 const timerInterval = setInterval(updateTimer, 1000);
 
-
-
-
-
-
-
 // ================= MODAL ELEMENTLARI =================
 const openBtnHero = document.getElementById('openModalHero');
 const openBtnTaqdimot = document.getElementById('openModalTaqdimot');
@@ -44,15 +38,10 @@ openBtnTaqdimot.addEventListener('click', () => formModal.style.display = 'flex'
 // faqat “×” bosilganda yopiladi
 closeModal.addEventListener('click', () => formModal.style.display = 'none');
 
-// tashqariga bosilganda ENDI YOPILMAYDI ❌
-// window.addEventListener('click', e => {
-//   if (e.target === formModal) formModal.style.display = 'none';
-// });
-
 // ================= TELEGRAM SOZLAMALARI =================
 const BOT_TOKEN = '8328125073:AAEWoSW-yjqgPLq4uLPEKGyemwa2lr47x6I';
 const CHAT_ID   = '-4935605017';
-const TG_LINK   = 'https://ttttt.me/+PIWZ83zlMeo4NTQy';
+const TG_LINK   = 'https://t.me/+PIWZ83zlMeo4NTQy'; // Telegram kanalning to'liq URL manzili
 
 // ================= FORM YUBORISH =================
 form.addEventListener('submit', async e => {
@@ -77,6 +66,7 @@ form.addEventListener('submit', async e => {
 
     if (res.ok) {
       formModal.style.display = 'none';
+      // Instagram orqali ishlaydigan havolani ochish
       window.open(TG_LINK, '_blank'); // Kanalga avtomatik o'tish
     } else {
       alert("Xatolik yuz berdi. Qayta urinib ko‘ring.");
