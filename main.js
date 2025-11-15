@@ -45,51 +45,30 @@ const SHEET_URL = 'https://script.google.com/macros/s/AKfycbxska3IZ_ItzB1MVVxizY
 form.addEventListener('submit', async function(e) {
   e.preventDefault();
 
-  let phone = document.getElementById('phone').value.trim();
+  let phone = document.getElementById('phone').value;
 
-  // 1. Faqat raqam va ruxsat etilgan belgilarni qoldirish
-  phone = phone.replace(/[^0-9+()\-\s]/g, '');
+  // 🔥 PROBELNI saqlash uchun
+  // Bo‘sh joylar → "~" belgiga almashtiriladi
+  let cleanPhone = phone.replace(/ /g, "~");
 
-  // 2. Agar hech qanday raqam yo'q bo'lsa
-  if (!phone.match(/\d/)) {
-    alert("Faqat raqam kiriting!");
-    return;
-  }
-
-  // 3. Faqat raqamlarni ajratib olish
-  const digits = phone.replace(/\D/g, '');
-
-  // 4. Minimal uzunlik (9 ta raqam)
-  if (digits.length < 9) {
-    alert("Kamida 9 ta raqam bo'lishi kerak!");
-    return;
-  }
-
-  // 5. O'zbekiston raqami: 998 yoki 9 bilan boshlanishi kerak
-  if (!digits.startsWith('998') && !digits.startsWith('9')) {
-    alert("Raqam +998 yoki 9 bilan boshlanishi kerak!");
-    return;
-  }
-
-  // 6. Tozalangan format: +998XXXXXXXXX
-  const cleanPhone = digits.startsWith('998') ? '+' + digits : '+998' + digits.slice(1);
+  // Agar butunlay bo'sh bo'lsa
+  if (cleanPhone.trim() === "") cleanPhone = "Boshl joy qoldirilgan";
 
   const submitBtn = form.querySelector('.submit-btn');
   const originalText = submitBtn.textContent;
   submitBtn.textContent = 'Yuborilmoqda...';
   submitBtn.disabled = true;
 
-  // 7. Telegram kanalini popup orqali ochish
   const popup = window.open(TG_LINK, '_blank');
   if (!popup) {
-    alert("Popup bloklandi! Iltimos, brauzer sozlamalarida ruxsat bering.");
+    alert("Popup bloklandi! Brauzerda ruxsat bering.");
     submitBtn.textContent = originalText;
     submitBtn.disabled = false;
     return;
   }
 
   try {
-    // 8. Google Sheets'ga yuborish
+    // Google Sheetsga yuborish
     await fetch(SHEET_URL, {
       method: 'POST',
       mode: 'no-cors',
@@ -97,7 +76,7 @@ form.addEventListener('submit', async function(e) {
       body: JSON.stringify({ phone: cleanPhone })
     });
 
-    // 9. Telegramga xabar yuborish
+    // Telegramga yuborish
     const text = `Yangi lid!\nTelefon: ${cleanPhone}\nVaqt: ${new Date().toLocaleString('uz-UZ')}`;
     const tgRes = await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
       method: 'POST',
@@ -106,15 +85,13 @@ form.addEventListener('submit', async function(e) {
     });
 
     const tgData = await tgRes.json();
-    if (!tgData.ok) throw new Error(tgData.description || "Telegram xatosi");
+    if (!tgData.ok) throw new Error(tgData.description);
 
-    // 10. Muvaffaqiyatli yuborish
     formModal.style.display = 'none';
     form.reset();
 
   } catch (error) {
-    console.error("Xato:", error);
-    alert("Internet bilan muammo. Qayta urinib ko‘ring.");
+    alert("Internetda muammo. Qayta urinib ko‘ring.");
     popup.close();
   } finally {
     submitBtn.textContent = originalText;
