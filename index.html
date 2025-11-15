@@ -33,6 +33,8 @@
 
   <link href="https://cdn.jsdelivr.net/gh/repalash/gilroy-free-webfont@fonts/Gilroy-Regular.css" rel="stylesheet">
   <link rel="stylesheet" href="./main.css">
+
+<link rel="stylesheet" href="./main.css">
 </head>
 
 <body>
@@ -111,8 +113,8 @@
           <img src="./images/barmoqizi.png" alt="Barmoq izi">
         </button>
 
-        <!-- MODAL (faqat telefon) -->
-        <div class="modal" id="formModal" style="display: none;">
+        <!-- Modal -->
+        <div class="modal" id="formModal">
           <div class="modal-content">
             <span class="close" id="closeModal">x</span>
             <h3>Davom etish uchun telefon raqamingizni kiriting</h3>
@@ -127,9 +129,93 @@
     </section>
   </main>
 
-  <!-- TO‘LIQ YANGI JS (Google Sheets + Telegram + Telefon tozalash) -->
-   <script src="./main.js"></script>
- 
+  <script>
+    // ================= TIMER =================
+    let minutes = 1;
+    let seconds = 5;
+    const timeDisplay = document.getElementById('time');
+
+    function updateTimer() {
+      let m = minutes < 10 ? '0' + minutes : minutes;
+      let s = seconds < 10 ? '0' + seconds : seconds;
+      timeDisplay.textContent = `${m}:${s}`;
+
+      if (seconds > 0) {
+        seconds--;
+      } else {
+        if (minutes > 0) {
+          minutes--;
+          seconds = 59;
+        } else {
+          clearInterval(timerInterval);
+          alert("Vaqt tugadi!");
+        }
+      }
+    }
+
+    updateTimer();
+    const timerInterval = setInterval(updateTimer, 1000);
+
+    // ================= MODAL ELEMENTLARI =================
+    const openBtnHero      = document.getElementById('openModalHero');
+    const openBtnTaqdimot  = document.getElementById('openModalTaqdimot');
+    const formModal        = document.getElementById('formModal');
+    const closeModal       = document.getElementById('closeModal');
+    const form             = document.getElementById('userForm');
+
+    openBtnHero.addEventListener('click', () => formModal.style.display = 'flex');
+    openBtnTaqdimot.addEventListener('click', () => formModal.style.display = 'flex');
+    closeModal.addEventListener('click', () => formModal.style.display = 'none');
+
+    // ================= TELEGRAM SOZLAMALARI =================
+    const BOT_TOKEN = '8328125073:AAEWoSW-yjqgPLq4uLPEKGyemwa2lr47x6I';
+    const CHAT_ID   = '-4935605017';
+    const TG_LINK   = 'https://t.me/+PIWZ83zlMeo4NTQy';
+
+    // ================= FORM YUBORISH (iOS + Android uchun 100% ishlaydi) =================
+    form.addEventListener('submit', async e => {
+      e.preventDefault();
+
+      const phone = document.getElementById('phone').value.trim();
+      if (!phone) {
+        alert("Iltimos, telefon raqamingizni kiriting!");
+        return;
+      }
+
+      // 1. DARHOL YANGI OYNA OCHISH (foydalanuvchi harakati ichida)
+      const popup = window.open('', '_blank');
+
+      if (!popup || popup.closed || typeof popup.closed === 'undefined') {
+        alert("Iltimos, popup ruxsatini bering va qayta urinib ko‘ring!");
+        return;
+      }
+
+      // Kanalga yo‘naltirish
+      popup.location = TG_LINK;
+
+      // 2. Telegramga xabar yuborish (fon rejimida)
+      const text = `Yangi ishtirokchi!\nTelefon: ${phone}`;
+
+      try {
+        const res = await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ chat_id: CHAT_ID, text })
+        });
+
+        if (res.ok) {
+          formModal.style.display = 'none';   // Modalni yopamiz
+          // Muvaffaqiyat xabari yo‘q – faqat kanal ochiladi
+        } else {
+          alert("Xatolik yuz berdi. Qayta urinib ko‘ring.");
+          popup.close();
+        }
+      } catch (err) {
+        alert("Internet aloqasi yo‘q yoki server bilan bog‘lanib bo‘lmadi.");
+        popup.close();
+      }
+    });
+  </script>
 </body>
 
 </html>
