@@ -24,12 +24,6 @@ function updateTimer() {
 updateTimer();
 const timerInterval = setInterval(updateTimer, 1000);
 
-
-
-
-
-
-
 // ================= MODAL ELEMENTLARI =================
 const openBtnHero = document.getElementById('openModalHero');
 const openBtnTaqdimot = document.getElementById('openModalTaqdimot');
@@ -40,48 +34,92 @@ const form = document.getElementById('userForm');
 // ================= MODAL OCHISH VA YOPISH =================
 openBtnHero.addEventListener('click', () => formModal.style.display = 'flex');
 openBtnTaqdimot.addEventListener('click', () => formModal.style.display = 'flex');
-
-// faqat “×” bosilganda yopiladi
 closeModal.addEventListener('click', () => formModal.style.display = 'none');
-
-// tashqariga bosilganda ENDI YOPILMAYDI ❌
-// window.addEventListener('click', e => {
-//   if (e.target === formModal) formModal.style.display = 'none';
-// });
 
 // ================= TELEGRAM SOZLAMALARI =================
 const BOT_TOKEN = '8328125073:AAEWoSW-yjqgPLq4uLPEKGyemwa2lr47x6I';
 const CHAT_ID   = '-4935605017';
 const TG_LINK   = 'https://t.me/+PIWZ83zlMeo4NTQy';
 
-// ================= FORM YUBORISH =================
-form.addEventListener('submit', async e => {
-  e.preventDefault();
+// ================= GOOGLE SHEETS WEB APP URL =================
+const SHEET_URL = 'https://script.google.com/macros/s/AKfycbyNKLUolZyGxfILbiRtqckjUq2t0Nfb4LxyJBYaYlbBxEq4WQNKCY7y3Ln0qou-eaFhyQ/exec';
 
-  const name = document.getElementById('name').value.trim();
-  const phone = document.getElementById('phone').value.trim();
+// ================= FORM YUBORISH (TO'LIQ YANGILANGAN) =================
+form.addEventListener('submit', async function(e) {
+    e.preventDefault();
 
-  if (!name || !phone) {
-    alert("Iltimos, ism va telefon raqamingizni kiriting!");
-    return;
-  }
+    const submitBtn = form.querySelector('button[type="submit"]');
+    const originalText = submitBtn.textContent;
+    submitBtn.textContent = 'Yuborilmoqda...';
+    submitBtn.disabled = true;
 
-  const text = `📢 Yangi ishtirokchi!\n    qora site 👤 Ism: ${name}\n📞 Telefon: ${phone}`;
+    const name = document.getElementById('name').value.trim();
+    const phone = document.getElementById('phone').value.trim();
 
-  try {
-    const res = await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
-      method: 'POST',
-      headers: {'Content-Type':'application/json'},
-      body: JSON.stringify({ chat_id: CHAT_ID, text })
-    });
-
-    if (res.ok) {
-      formModal.style.display = 'none';
-      window.open(TG_LINK, '_blank'); // Kanalga avtomatik o'tish
-    } else {
-      alert("Xatolik yuz berdi. Qayta urinib ko‘ring.");
+    if (!name || !phone) {
+        alert("Iltimos, ism va telefon raqamingizni kiriting!");
+        submitBtn.textContent = originalText;
+        submitBtn.disabled = false;
+        return;
     }
-  } catch (err) {
-    alert("Internet aloqasi yo‘q yoki server bilan bog‘lanib bo‘lmadi.");
-  }
+
+    try {
+        // 1. GOOGLE SHEETS GA YUBORISH
+        const sheetResponse = await fetch(SHEET_URL, {
+            method: 'POST',
+            mode: 'no-cors',  // CORS muammosini hal qiladi
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ name, phone })
+        });
+
+        console.log('Google Sheets javobi:', sheetResponse);
+
+        // 2. TELEGRAM GA YUBORISH
+        const text = `Yangi ishtirokchi!\nIsm: ${name}\nTelefon: ${phone}`;
+        
+        const tgResponse = await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ chat_id: CHAT_ID, text })
+        });
+
+        const tgData = await tgResponse.json();
+
+        if (!tgData.ok) {
+            throw new Error(tgData.description || "Telegram xatosi");
+        }
+
+        // MUVAFFAQIYAT
+        formModal.style.display = 'none';
+        window.open(TG_LINK, '_blank');
+        alert("Muvaffaqiyatli ro'yxatdan o'tdingiz!");
+
+        form.reset();
+
+    } catch (error) {
+        console.error('XATO:', error);
+        alert("Xatolik yuz berdi: " + error.message);
+    } finally {
+        submitBtn.textContent = originalText;
+        submitBtn.disabled = false;
+    }
 });
+
+// ================= TEST FUNKSIYASI (Console orqali sinash uchun) =================
+window.testForm = async function() {
+    const fakeName = "Test User " + Date.now();
+    const fakePhone = "+9989" + Math.floor(Math.random() * 10000000);
+
+    try {
+        await fetch(SHEET_URL, {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ name: fakeName, phone: fakePhone })
+        });
+
+        alert(`TEST MUVOFFAQIYATLI!\nIsm: ${fakeName}\nTelefon: ${fakePhone}\nGoogle Sheets da ko'ring!`);
+    } catch (err) {
+        alert("TEST XATOLIK: " + err.message);
+    }
+};
