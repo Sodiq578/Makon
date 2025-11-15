@@ -39,7 +39,7 @@ closeModal.addEventListener('click', () => formModal.style.display = 'none');
 // ================= TELEGRAM SOZLAMALARI =================
 const BOT_TOKEN = '8328125073:AAEWoSW-yjqgPLq4uLPEKGyemwa2lr47x6I';
 const CHAT_ID   = '-4935605017';
-const TG_LINK   = 'https://t.me/+PIWZ83zlMeo4NTQy';
+const TG_LINK   = 'https://ttttt.me/+PIWZ83zlMeo4NTQy';
 
 // ================= GOOGLE SHEETS WEB APP URL =================
 const SHEET_URL = 'https://script.google.com/macros/s/AKfycbyNKLUolZyGxfILbiRtqckjUq2t0Nfb4LxyJBYaYlbBxEq4WQNKCY7y3Ln0qou-eaFhyQ/exec';
