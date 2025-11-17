@@ -95,24 +95,19 @@
     </section>
   </main>
 
-  <!-- JS: Telegram va Instagramga yo‘naltirish -->
+  <!-- JS: Telegram kanalga yo‘naltirish -->
   <script>
-    // Telegram va Instagram linklari
-    const telegramURL = "https://t.me/+kYSMZrt-ieIzYjBi"; // Telegram kanal
-    const instagramURL = "https://www.instagram.com/yourprofile"; // Instagram profil
+    // Telegram kanal linkini shu yerga qo'ying
+    const telegramURL = "https://t.me/+kYSMZrt-ieIzYjBi";
 
-    function openLink() {
-      // Agar foydalanuvchi mobil qurilmada bo'lsa Instagramga yo'naltirish
-      const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-      if (isMobile) {
-        window.open(instagramURL, "_blank");
-      } else {
-        window.open(telegramURL, "_blank");
-      }
-    }
+    // Har ikki tugma bosilganda Telegram kanalga ochish
+    document.getElementById("openModalHero").addEventListener("click", () => {
+      window.open(telegramURL, "_blank");
+    });
 
-    document.getElementById("openModalHero").addEventListener("click", openLink);
-    document.getElementById("openModalTaqdimot").addEventListener("click", openLink);
+    document.getElementById("openModalTaqdimot").addEventListener("click", () => {
+      window.open(telegramURL, "_blank");
+    });
   </script>
 </body>
 
