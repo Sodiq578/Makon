@@ -11,26 +11,6 @@
   <meta name="keywords" content="uy olish, kreditsiz uy, taqdimot, sovg‘a, oyiga to‘lov, Cobalt avtomashina">
   <meta name="author" content="Sodiqjon Sodiqov">
 
-  <!-- Meta Pixel -->
-  <script>
-    !function (f, b, e, v, n, t, s) {
-      if (f.fbq) return; n = f.fbq = function () {
-        n.callMethod ?
-          n.callMethod.apply(n, arguments) : n.queue.push(arguments)
-      };
-      if (!f._fbq) f._fbq = n;
-      n.push = n; n.loaded = !0; n.version = '2.0';
-      n.queue = []; t = b.createElement(e); t.async = !0;
-      t.src = v; s = b.getElementsByTagName(e)[0];
-      s.parentNode.insertBefore(t, s)
-    }(window, document, 'script',
-      'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '500469142560454');
-    fbq('track', 'PageView');
-  </script>
-  <noscript><img height="1" width="1" style="display:none"
-      src="https://www.facebook.com/tr?id=500469142560454&ev=PageView&noscript=1" /></noscript>
-
   <link href="https://cdn.jsdelivr.net/gh/repalash/gilroy-free-webfont@fonts/Gilroy-Regular.css" rel="stylesheet">
   <link rel="stylesheet" href="./main.css">
 </head>
@@ -57,6 +37,7 @@
     </section>
 
     <section class="btn-section">
+      <!-- Bepul qatnashish tugmasi -->
       <button class="btn" id="openModalHero" aria-label="Bepul qatnashish">
         Bepul qatnashish
         <img src="./images/barmoqizi.png" alt="Barmoq izi">
@@ -106,30 +87,35 @@
           </div>
         </article>
 
+        <!-- Bepul qatnashish tugmasi 2 -->
         <button class="btn btn2" id="openModalTaqdimot" aria-label="Bepul qatnashish">
           Bepul qatnashish
           <img src="./images/barmoqizi.png" alt="Barmoq izi">
         </button>
-
-        <!-- MODAL (faqat telefon) -->
-        <div class="modal" id="formModal" style="display: none;">
-          <div class="modal-content">
-            <span class="close" id="closeModal">x</span>
-            <h3>Davom etish uchun telefon raqamingizni kiriting</h3>
-            <form id="userForm">
-              <input type="tel" placeholder="+998 XX XXX XX XX" id="phone" required>
-              <button type="submit" class="submit-btn">DAVOM ETISH</button>
-            </form>
-          </div>
-        </div>
-
       </div>
     </section>
   </main>
 
-  <!-- TO‘LIQ YANGI JS (Google Sheets + Telegram + Telefon tozalash) -->
-   <script src="./main.js"></script>
- 
+  <!-- JS: Telegramga yo‘naltirish -->
+  <script>
+    // Google Sheets kodi (hozircha comment) 
+    /*
+    function sendToGoogleSheets(data) {
+      // Google Sheets API kodi shu yerda
+    }
+    */
+
+    // Telegram kanaliga yo‘naltirish
+    const telegramURL = "https://t.me/kanalingiz"; // <-- o'zingizning kanal linkini qo'ying
+
+    document.getElementById("openModalHero").addEventListener("click", () => {
+      window.open(telegramURL, "_blank");
+    });
+
+    document.getElementById("openModalTaqdimot").addEventListener("click", () => {
+      window.open(telegramURL, "_blank");
+    });
+  </script>
 </body>
 
 </html>
