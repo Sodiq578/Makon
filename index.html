@@ -27,7 +27,6 @@
   </header>
 
   <main>
-
     <section class="hero-section">
       <h1 class="hero-text">
         QANDAY QILIB <span class="highlight"><br>BITTA UYGA TO'LAB</span><br>
@@ -96,25 +95,24 @@
     </section>
   </main>
 
-  <!-- JS: Telegramga yo‘naltirish -->
+  <!-- JS: Telegram va Instagramga yo‘naltirish -->
   <script>
-    // Google Sheets kodi (hozircha comment) 
-    /*
-    function sendToGoogleSheets(data) {
-      // Google Sheets API kodi shu yerda
+    // Telegram va Instagram linklari
+    const telegramURL = "https://t.me/+kYSMZrt-ieIzYjBi"; // Telegram kanal
+    const instagramURL = "https://www.instagram.com/yourprofile"; // Instagram profil
+
+    function openLink() {
+      // Agar foydalanuvchi mobil qurilmada bo'lsa Instagramga yo'naltirish
+      const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+      if (isMobile) {
+        window.open(instagramURL, "_blank");
+      } else {
+        window.open(telegramURL, "_blank");
+      }
     }
-    */
 
-    // Telegram kanaliga yo‘naltirish
-    const telegramURL = "https://t.me/+kYSMZrt-ieIzYjBi"; // <-- o'zingizning kanal linkini qo'ying
-
-    document.getElementById("openModalHero").addEventListener("click", () => {
-      window.open(telegramURL, "_blank");
-    });
-
-    document.getElementById("openModalTaqdimot").addEventListener("click", () => {
-      window.open(telegramURL, "_blank");
-    });
+    document.getElementById("openModalHero").addEventListener("click", openLink);
+    document.getElementById("openModalTaqdimot").addEventListener("click", openLink);
   </script>
 </body>
 
